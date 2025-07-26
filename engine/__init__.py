@@ -1,6 +1,3 @@
-import os
-import json
-
 class UserData:
     def __init__(self, platform, username):
         self.username = username
