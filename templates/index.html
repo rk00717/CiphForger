@@ -5,11 +5,97 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon/favicon-32x32.png') }}" />
 
-    <title>Hello World</title>
+    <title>CiphForger</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}" />
 </head>
 <body>
-    <h1>Hello Flask + Jinja2</h1>
+<div class="main_container">
+<div class="card">
+    <div class="tools">
+        <div class="circle">
+            <span class="red box"></span>
+        </div>
+        <div class="circle">
+            <span class="yellow box"></span>
+        </div>
+        <div class="circle">
+            <span class="green box"></span>
+        </div>
+    </div>
+    <div class="title">CiphForger</div>
+    <div class="card_content">
+        <form method="POST">
+            <div class="field_group">
+                <input type="text" name="platform_name" placeholder="Platform Name" />
+                <input type="text" name="username" placeholder="Username" />
+                <input type="number" name="table_size" placeholder="Table Size" />
+                <input type="number" name="length" placeholder="Password Length" />
+                <input type="number" name="salt_1" placeholder="Salt 1" />
+                <input type="number" name="salt_2" placeholder="Salt 2" />
+            </div>
+
+            <!-- <div class="checkbox_group">
+                <label for="upper" class="checkbox">
+                    Include Uppercase
+                    <input id="upper" name="upper" type="checkbox" checked />
+                    <div class="checkmark"></div>
+                </label>
+                <label for="lower" class="checkbox">
+                    Include Lowercase
+                    <input id="lower" name="lower" type="checkbox" checked />
+                    <div class="checkmark"></div>
+                </label>
+                <label for="digits" class="checkbox">
+                    Include Digits
+                    <input id="digits" name="digits" type="checkbox" checked />
+                    <div class="checkmark"></div>
+                </label>
+                <label for="symbols" class="checkbox">
+                    Include Symbols
+                    <input id="symbols" name="symbols" type="checkbox" checked />
+                    <div class="checkmark"></div>
+                </label>
+            </div> -->
+            <button type="submit" class="button">Generate</button>
+        </form>
+
+        <div class="card_footer"> 
+            {% if password %}
+            <div class="password_display">
+                <p id="passwordText" style="display:none;">{{ password }}</p>
+            </div>
+            <button id="toggleBtn" class="button" type="submit" onClick={togglePassword()}>Show</button>
+            <button class="button" type="submit" onClick={copyToClipboard()}>Copy</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
 </body>
+<script>
+    function copyToClipboard(content) {
+        const passwordText = document.getElementById('passwordText');
+        navigator.clipboard.writeText(passwordText.textContent)
+            .then(() => alert("Password copied to clipboard!"))
+            .catch(err => console.error("Copy failed:", err));
+    }
+
+    function togglePassword() {
+        const passwordElem = document.getElementById('passwordText');
+        const toggleBtn = document.getElementById('toggleBtn');
+
+        if (passwordElem.style.display === "none") {
+            passwordElem.style.display = "block";
+            toggleBtn.textContent = "Hide";
+        } else {
+            passwordElem.style.display = "none";
+            toggleBtn.textContent = "Show";
+        }
+    }
+</script>
 </html>
