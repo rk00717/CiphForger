@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}" />
 </head>
 <body>
-<div class="main_container">
+<div class="main_container non_selectable">
 <div class="card">
     <div class="tools">
         <div class="circle">
@@ -76,6 +76,11 @@
     </div>
 </div>
 </div>
+<footer>
+    <div class="container">
+        &copy; RKodeGames 2025 - All Rights Reserved.
+    </div>
+</footer>
 </body>
 <script type="module">
     import { protectContext } from "{{ url_for('static', filename='js/protectContext.js') }}";

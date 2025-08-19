@@ -1,9 +1,10 @@
+@import url("./values.css");
+
 * {
     margin: 0;
     padding: 0;
 
     font-family: "Calibri", "Arial";
-    color: #323232;
 }
 
 .show {
@@ -117,7 +118,7 @@ form button {
     width: 580px;
     height: fit-content;
 
-    background-color: #aff3ff;
+    background-color: var(--primary);
     border-radius: 8px;
 }
 
@@ -298,4 +299,29 @@ form input {
     border-width: 0 0.15em 0.15em 0;
     transform: rotate(45deg);
     transition: all 500ms ease-in-out;
+}
+
+
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    
+    font-size: 12px;
+    text-align: right;
+
+    background: var(--secondary);
+    color: var(--font-light);
+}
+
+footer>.container {
+    padding: 10px 40px;
+}
+
+@media (width < 768px) {
+    footer {
+        text-align: center;
+    }
 }
