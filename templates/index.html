@@ -77,6 +77,10 @@
 </div>
 </div>
 </body>
+<script type="module">
+    import { protectContext } from "{{ url_for('static', filename='js/protectContext.js') }}";
+    protectContext();
+</script>
 <script>
     function copyToClipboard(content) {
         const passwordText = document.getElementById('passwordText');
