@@ -21,6 +21,12 @@
     user-select: none; /* Standard syntax */
 }
 
+svg {
+    width: 30px;
+    aspect-ratio: 1;
+    align-self: center;
+}
+
 .main_container {
     display: grid;
     align-items: center;
@@ -39,18 +45,25 @@
 }
 
 .password_display {
+    height: 60px;
     flex-grow: 1;
 
     border: 1px solid #ccc;
     border-radius: 5px;
+
+    overflow: hidden;
 }
 
 #passwordText {
+    position: relative;
     padding: 0 10px;
 
     font-size: 1.2em;
     align-content: center;
-    line-height:40px;
+    line-height: 60px;
+
+    width: 100%;
+    text-overflow: ellipsis;
 }
 
 .field_group {
@@ -64,16 +77,12 @@
     grid-template-columns: auto auto;
 }
 
-.card_content form {
-    position: relative;
-
+.ciph_form {
     display: grid;
     gap: 20px;
-
-    height: fit-content;
 }
 
-form button {
+.ciph_form button {
     justify-self: end;
 }
 
@@ -111,7 +120,7 @@ form button {
 
 /* Frame ============= */
 /* From Uiverse.io by EmmaxPlay */ 
-.card {
+.frame {
     margin: 0 auto;
     position: relative;
 
@@ -160,7 +169,7 @@ form button {
     background-color: #00ca4e;
 }
 
-.card_content {
+.frame_content {
     margin: auto;
     padding: 20px 10px;
     position: relative;
@@ -169,10 +178,10 @@ form button {
     height: fit-content;
 }
 
-.card_footer {
+.frame_footer {
     margin: auto;
-    padding-top: 15px;
-    
+    margin-top: 15px;
+
     display: flex;
     gap: 20px;
 
@@ -182,7 +191,7 @@ form button {
 
 
 /* Input ============= */
-form input {
+.input_field {
     padding: 12px 16px;
     border-radius: 6px;
     font-family: inherit;
@@ -216,6 +225,15 @@ form input {
 .button:hover {
     box-shadow: none;
     opacity: 80%;
+}
+
+.icon_btn {
+    width: 60px;
+    aspect-ratio: 1;
+}
+
+.icon_btn > svg {
+    margin: auto;
 }
 
 
@@ -302,7 +320,23 @@ form input {
 }
 
 
+@media (width < 768px) {
+    .frame {
+        width: 300px;
+    }
 
+    .field_group {
+        grid-template-columns: auto;
+    }
+
+    .frame_footer {
+        grid-template-areas: "di di"
+            "sb cb";
+    }
+}
+
+
+/* Footer ============= */
 
 footer {
     position: absolute;

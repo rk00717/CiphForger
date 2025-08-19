@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="main_container non_selectable">
-<div class="card">
+<div class="frame">
     <div class="tools">
         <div class="circle">
             <span class="red box"></span>
@@ -28,15 +28,15 @@
         </div>
     </div>
     <div class="title">CiphForger</div>
-    <div class="card_content">
-        <form method="POST">
+    <div class="frame_content">
+        <form method="POST" class="ciph_form">
             <div class="field_group">
-                <input type="text" name="platform_name" placeholder="Platform Name" />
-                <input type="text" name="username" placeholder="Username" />
-                <input type="number" name="table_size" placeholder="Table Size" />
-                <input type="number" name="length" placeholder="Password Length" />
-                <input type="number" name="salt_1" placeholder="Salt 1" />
-                <input type="number" name="salt_2" placeholder="Salt 2" />
+                <input class="input_field" type="text" name="platform_name" placeholder="Platform Name" />
+                <input class="input_field" type="text" name="username" placeholder="Username" />
+                <input class="input_field" type="number" name="table_size" placeholder="Table Size" />
+                <input class="input_field" type="number" name="length" placeholder="Password Length" />
+                <input class="input_field" type="number" name="salt_1" placeholder="Salt 1" />
+                <input class="input_field" type="number" name="salt_2" placeholder="Salt 2" />
             </div>
 
             <!-- <div class="checkbox_group">
@@ -63,14 +63,25 @@
             </div> -->
             <button type="submit" class="button">Generate</button>
         </form>
-
-        <div class="card_footer"> 
+        <div class="frame_footer"> 
             {% if password %}
             <div class="password_display">
                 <p id="passwordText" style="display:none;">{{ password }}</p>
             </div>
-            <button id="toggleBtn" class="button" type="submit" onClick={togglePassword()}>Show</button>
-            <button class="button" type="submit" onClick={copyToClipboard()}>Copy</button>
+            <button id="toggleBtn" class="button icon_btn" type="submit" onClick={togglePassword()}>
+                <svg id="Icon_Hide" class="hide" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.722 22.964C18.818 23.06 18.779 23.228 18.649 23.27C10.949 25.736 2.61701 21.767 0.055006 14.328C-0.016994 14.118 -0.016994 13.884 0.055006 13.673C0.798006 11.516 2.04501 9.62601 3.64301 8.10001C3.70401 8.04201 3.80101 8.04401 3.86001 8.10301L8.16201 12.405C8.19201 12.435 8.20301 12.477 8.19301 12.518C7.07701 16.863 11.141 20.913 15.469 19.812C15.518 19.799 15.564 19.808 15.6 19.844C15.958 20.201 18.045 22.287 18.722 22.964Z" fill="white"/>
+                    <path d="M22.68 21.266C25.086 19.574 26.961 17.187 27.946 14.325C28.018 14.115 28.018 13.885 27.946 13.675C25.954 7.88801 20.35 4.00001 14 4.00001C11.521 4.00001 9.15901 4.59701 7.07901 5.66501L1.70701 0.293006C1.31601 -0.0979941 0.684006 -0.0979941 0.293006 0.293006C-0.0979941 0.684006 -0.0979941 1.31601 0.293006 1.70701L26.293 27.707C26.684 28.098 27.316 28.098 27.707 27.707C28.098 27.316 28.098 26.684 27.707 26.293L22.68 21.266ZM14 8.00001C17.309 8.00001 20 10.691 20 14C20 15.294 19.584 16.49 18.885 17.471L10.529 9.11501C11.51 8.41601 12.706 8.00001 14 8.00001Z" fill="white"/>
+                </svg>
+                <svg id="Icon_Show" class="show" width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M27.946 9.675C25.954 3.888 20.35 0 14 0C7.65 0 2.046 3.888 0.054 9.675C-0.018 9.885 -0.018 10.115 0.054 10.325C2.046 16.112 7.65 20 14 20C20.35 20 25.954 16.112 27.946 10.325C28.018 10.115 28.018 9.885 27.946 9.675ZM14 16C10.691 16 8 13.309 8 10C8 6.691 10.691 4 14 4C17.309 4 20 6.691 20 10C20 13.309 17.309 16 14 16Z" fill="white"/>
+                </svg>
+            </button>
+            <button id="copyBtn" class="button icon_btn" type="submit" onClick={copyToClipboard()}>
+                <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M27.1213 4.12131L23.8787 0.878688C23.3161 0.316077 22.553 4.16048e-06 21.7574 0L11 0C9.34312 0 8 1.34312 8 3V6H3C1.34312 6 0 7.34312 0 9V29C0 30.6569 1.34312 32 3 32H17C18.6569 32 20 30.6569 20 29V26H25C26.6569 26 28 24.6569 28 23V6.24263C28 5.44698 27.6839 4.68392 27.1213 4.12131ZM16.625 29H3.375C3.27554 29 3.18016 28.9605 3.10983 28.8902C3.03951 28.8198 3 28.7245 3 28.625V9.375C3 9.27554 3.03951 9.18016 3.10983 9.10983C3.18016 9.03951 3.27554 9 3.375 9H8V23C8 24.6569 9.34312 26 11 26H17V28.625C17 28.7245 16.9605 28.8198 16.8902 28.8902C16.8198 28.9605 16.7245 29 16.625 29ZM24.625 23H11.375C11.2755 23 11.1802 22.9605 11.1098 22.8902C11.0395 22.8198 11 22.7245 11 22.625V3.375C11 3.27554 11.0395 3.18016 11.1098 3.10983C11.1802 3.03951 11.2755 3 11.375 3H18V8.5C18 9.32844 18.6716 10 19.5 10H25V22.625C25 22.7245 24.9605 22.8198 24.8902 22.8902C24.8198 22.9605 24.7245 23 24.625 23ZM25 7H21V3H21.602C21.7014 3 21.7968 3.0395 21.8672 3.10981L24.8902 6.13281C24.925 6.16764 24.9526 6.20898 24.9715 6.25448C24.9903 6.29999 25 6.34875 25 6.398V7Z" fill="white"/>
+                </svg>
+            </button>
             {% endif %}
         </div>
     </div>
@@ -84,7 +95,7 @@
 </body>
 <script type="module">
     import { protectContext } from "{{ url_for('static', filename='js/protectContext.js') }}";
-    protectContext();
+    // protectContext();
 </script>
 <script>
     function copyToClipboard(content) {
@@ -100,10 +111,20 @@
 
         if (passwordElem.style.display === "none") {
             passwordElem.style.display = "block";
-            toggleBtn.textContent = "Hide";
+            setIcon(false);
         } else {
             passwordElem.style.display = "none";
-            toggleBtn.textContent = "Show";
+            setIcon(true);
+        }
+    }
+    
+    function setIcon(status) {
+        if(status) {
+            Icon_Show.classList.replace("hide", "show");
+            Icon_Hide.classList.replace("show", "hide");
+        }else {
+            Icon_Show.classList.replace("show", "hide");
+            Icon_Hide.classList.replace("hide", "show");
         }
     }
 </script>
